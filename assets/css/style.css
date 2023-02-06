@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+:root {
+  --backgroundColor: #e7d7c1;
+  --textColor: #3d2e2b;
+  --buttonColor: #8c1c13;
+  --hoverColor: #eb6565;
+}
+
+/* General Styling */
+body {
+  background-color: var(--backgroundColor);
+}
+
+h1,
+h2,
+h3,
+a,
+p,
+li,
+button,
+input,
+nav div {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  background-color: var(--hoverColor);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  color: var(--textColor);
+  font-size: larger;
+}
+
+main {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 25% 75%;
+
+  width: 90%;
+  padding: 1rem;
+  margin: auto;
+}
+
+.search_sidebar {
+  display: grid;
+  gap: 1.5rem;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.search_form {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.search_history {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.search_history button {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  min-width: 250px;
+
+  background: var(--buttonColor);
+  border-radius: 999px;
+
+  color: #ffffff;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+
+  padding: 1rem;
+  border: 0;
+}
+
+.content {
+  display: grid;
+  gap: 1.5rem;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.forecastPresent_content {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.forecastFuture_content {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+.forecastFuture_day {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid black 5px;
+}
+
+@media (max-width: 1700px) {
+  main {
+    grid-template-columns: 100%;
+  }
+
+  .search_sidebar {
+    grid-template-columns: 25% 75%;
+  }
+  .search_history button {
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 1300px) {
+  main {
+    grid-template-columns: 100%;
+  }
+
+  .search_sidebar {
+    grid-template-columns: 100%;
+  }
+
+  .forecastFuture_content {
+    grid-template-columns: 100%;
+  }
+}
