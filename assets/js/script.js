@@ -1,18 +1,17 @@
 const searchBtn = document.querySelector(".searchBtn");
 const userInput = document.querySelector("#cityGet").value;
+const cityNameEl = document.querySelector(".cityName");
+const cityStateEl = document.querySelector(".cityState");
+const cityCountryEl = document.querySelector(".cityCountry");
 const dateEl = document.querySelector(".dateToday");
+const weatherEl = document.querySelector(".weather");
+const weatherDescriptionEl = document.querySelector(".weatherDescription");
 const iconEl = document.querySelector(".icon");
 const temperatureEl = document.querySelector(".temperature");
+const humidityEl = document.querySelector(".humidity");
 const windSpeedEl = document.querySelector(".windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
-
-const userCity = {
-  cityName: "",
-  latitude: "",
-  longitude: "",
-  weather: "",
-};
 
 // Generate Weather Data from User Input on Search Click
 searchBtn.addEventListener("click", (event) => {
@@ -26,10 +25,9 @@ searchBtn.addEventListener("click", (event) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      userCity.cityName = data[0].name;
-      userCity.latitude = data[0].lat;
-      userCity.longitude = data[0].lon;
-      console.log(userCity);
+      cityNameEl.textContent = data[0].name;
+      cityStateEl.textContent = data[0].state;
+      cityCountryEl.textContent = data[0].country;
 
       // Get Weather from Coordinates
       return fetch(
@@ -38,8 +36,15 @@ searchBtn.addEventListener("click", (event) => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          userCity.weather = data.weather[0].main;
-          console.log(userCity);
+          weatherEl.textContent = data.weather[0].main;
+          weatherDescriptionEl.textContent = data.weather[0].description;
+          temperatureEl.textContent = data.main.temp;
+          humidityEl.textContent = data.main.humidity;
+          windSpeedEl.textContent = data.wind.speed;
+
+          iconEl.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+          // document.querySelector(".forecastPresentContent").appendChild(icon);
         });
     });
 });
