@@ -13,35 +13,21 @@
     <main>
       <div class="search_sidebar">
         <form class="search_form">
-          <input
-            type="search"
-            id="site-search"
-            name="q"
-            placeholder="San Diego"
-          />
+          <input type="search" id="cityGet" name="q" placeholder="San Diego" />
 
-          <button>Search</button>
+          <button class="searchBtn">Search</button>
         </form>
-        <div class="search_history">
-          <button>Seattle</button>
-          <button>San Diego</button>
-          <button>San Diego</button>
-          <button>Seattle</button>
-          <button>San Diego</button>
-          <button>San Diego</button>
-          <button>Seattle</button>
-          <button>San Diego</button>
-        </div>
+        <div class="search_history"></div>
       </div>
       <div class="content">
         <div class="forecastPresent_content">
-          <h2>City name</h2>
+          <h2 class="cityName">City name</h2>
           <ul>
-            <li>Date</li>
-            <li>Icon</li>
-            <li>Temperature</li>
-            <li>Humidity</li>
-            <li>Wind Speed</li>
+            <li class="date">Date</li>
+            <li class="icon">Icon</li>
+            <li class="temperature">Temperature</li>
+            <li class="humidity">Humidity</li>
+            <li class="windSpeed">Wind Speed</li>
           </ul>
         </div>
         <div class="forecastFuture_content">
