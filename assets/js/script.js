@@ -100,6 +100,9 @@ searchBtn.addEventListener("click", (event) => {
       cityStateEl.textContent = data[0].state;
       cityCountryEl.textContent = data[0].country;
 
+      let today = new Date();
+      dateEl.textContent = today;
+
       // Get Present Day Weather from Coordinates
       return fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKey}&units=imperial`
@@ -123,6 +126,10 @@ searchBtn.addEventListener("click", (event) => {
               console.log(data);
               // Noon: 3, 11, 19, 27, 35
               // Forecast Day 1
+              let day1 = new Date();
+              day1.setDate(today.getDate() + 1);
+              forecast1_dateEl.textContent = day1;
+
               forecast1_iconEl.src = `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
               forecast1_weatherEl.textContent = data.list[3].weather[0].main;
               forecast1_weatherDescriptionEl.textContent =
@@ -132,6 +139,10 @@ searchBtn.addEventListener("click", (event) => {
               forecast1_windSpeedEl.textContent = data.list[3].wind.speed;
 
               // Forecast Day 2
+              let day2 = new Date();
+              day2.setDate(today.getDate() + 2);
+              forecast2_dateEl.textContent = day2;
+
               forecast2_iconEl.src = `http://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
               forecast2_weatherEl.textContent = data.list[11].weather[0].main;
               forecast2_weatherDescriptionEl.textContent =
@@ -141,6 +152,10 @@ searchBtn.addEventListener("click", (event) => {
               forecast2_windSpeedEl.textContent = data.list[11].wind.speed;
 
               // Forecast Day 3
+              let day3 = new Date();
+              day3.setDate(today.getDate() + 3);
+              forecast3_dateEl.textContent = day3;
+
               forecast3_iconEl.src = `http://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
               forecast3_weatherEl.textContent = data.list[19].weather[0].main;
               forecast3_weatherDescriptionEl.textContent =
@@ -150,6 +165,10 @@ searchBtn.addEventListener("click", (event) => {
               forecast3_windSpeedEl.textContent = data.list[19].wind.speed;
 
               // Forecast Day 4
+              let day4 = new Date();
+              day4.setDate(today.getDate() + 4);
+              forecast4_dateEl.textContent = day4;
+
               forecast4_iconEl.src = `http://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
               forecast4_weatherEl.textContent = data.list[27].weather[0].main;
               forecast4_weatherDescriptionEl.textContent =
@@ -159,6 +178,10 @@ searchBtn.addEventListener("click", (event) => {
               forecast4_windSpeedEl.textContent = data.list[27].wind.speed;
 
               // Forecast Day 5
+              let day5 = new Date();
+              day5.setDate(today.getDate() + 5);
+              forecast5_dateEl.textContent = day5;
+
               forecast5_iconEl.src = `http://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
               forecast5_weatherEl.textContent = data.list[35].weather[0].main;
               forecast5_weatherDescriptionEl.textContent =
