@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 :root {
-  --backgroundColor: #e7d7c1;
+  --backgroundColor: #ffe5d9;
   --textColor: #3d2e2b;
-  --buttonColor: #8c1c13;
-  --hoverColor: #eb6565;
+  --buttonColor: #d8e2dc;
+  --hoverColor: #ffd7ba;
 }
 
 /* General Styling */
@@ -56,16 +56,20 @@ main {
 .search_sidebar {
   display: grid;
   gap: 1.5rem;
+  grid-template-rows: 100px auto;
 
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+
+  background-color: #ece4db;
 }
 
 .search_form {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+
+  background-color: #d8e2dc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search_history {
@@ -75,7 +79,8 @@ main {
   gap: 1.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #d8e2dc;
 }
 
 .search_history button {
@@ -104,13 +109,16 @@ main {
 
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+
+  background-color: #ece4db;
 }
 
 .forecastPresent_content {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+  /* border: solid black 5px; */
+  background-color: #d8e2dc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .forecastFuture_content {
@@ -119,13 +127,30 @@ main {
   grid-template-columns: repeat(5, 1fr);
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+  /* border: solid black 5px; */
+  background-color: #d8e2dc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cityName {
+  font-size: 4rem;
+}
+
+.weather,
+.forecast1_weather,
+.forecast2_weather,
+.forecast3_weather,
+.forecast4_weather,
+.forecast5_weather {
+  font-size: 1.75rem;
 }
 
 .forecastFuture_day {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: solid black 5px;
+  border: solid rgb(68, 68, 68) 3px;
+
+  background-color: #ffd7ba;
 }
 
 @media (max-width: 1700px) {
