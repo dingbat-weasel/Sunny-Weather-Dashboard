@@ -2,6 +2,7 @@
 // Form
 const searchBtn = document.querySelector(".searchBtn");
 const userInput = document.querySelector("#cityGet").value;
+const searchHistoryEl = document.querySelector(".search_history");
 
 // Location
 const cityNameEl = document.querySelector(".cityName");
@@ -84,9 +85,32 @@ const forecast5_windSpeedEl = document.querySelector(".forecast5_windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
 
+// function getRecentSearches() {
+//   //grab user input
+//   //save it in locale storage
+//   //get it using a variable
+//   //create button with value of recent search from storage variable
+// }
+
+// function displayRecentSearch() {
+//   let button = document.createElement("button");
+//   button.textContent = localStorage.getItem("recentSearch");
+//   searchHistoryEl.appendChild(button);
+// }
+
+// displayRecentSearch();
+
 // Generate Weather Data from User Input on Search Click
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
+
+  // // Save Search
+  // localStorage.setItem(
+  //   "recentSearch",
+  //   document.querySelector("#cityGet").value
+  // );
+  // displayRecentSearch();
+
   // Get Coordinates
   fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${

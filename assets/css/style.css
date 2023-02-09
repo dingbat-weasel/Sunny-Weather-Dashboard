@@ -7,6 +7,20 @@
   --hoverColor: #ffd7ba;
 }
 
+/* 
+Palette save for later
+FEC5BB
+FCD5CE
+FAE1DD
+F8EDEB
+E8E8E4
+D8E2DC
+ECE4DB
+FFE5D9
+FFD7BA
+FEC89A
+*/
+
 /* General Styling */
 body {
   background-color: var(--backgroundColor);
@@ -88,11 +102,12 @@ main {
   flex-shrink: 0;
   flex-basis: 100%;
   min-width: 250px;
+  max-height: 50px;
 
-  background: var(--buttonColor);
+  background: #fec5bb;
   border-radius: 999px;
 
-  color: #ffffff;
+  color: var(--textColor);
   cursor: pointer;
 
   font-size: 16px;
