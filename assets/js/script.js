@@ -3,6 +3,7 @@
 const searchBtn = document.querySelector(".searchBtn");
 const userInput = document.querySelector("#cityGet").value;
 const searchHistoryEl = document.querySelector(".search_history");
+const recentSearchBtnsEl = document.querySelectorAll(".recentSearchBtn");
 
 // Location
 const cityNameEl = document.querySelector(".cityName");
@@ -84,33 +85,30 @@ const forecast5_humidityEl = document.querySelector(".forecast5_humidity");
 const forecast5_windSpeedEl = document.querySelector(".forecast5_windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
+let recentSearches = [];
 
-// function getRecentSearches() {
-//   //grab user input
-//   //save it in locale storage
-//   //get it using a variable
-//   //create button with value of recent search from storage variable
-// }
+function saveRecentSearch() {
+  recentSearches.unshift(document.querySelector("#cityGet").value);
+  window.localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+function getRecentSearches() {
+  recentSearches = window.localStorage.getItem("recentSearches");
+  recentSearches = JSON.parse(recentSearches);
+  console.log(recentSearches);
+}
 
-// function displayRecentSearch() {
-//   let button = document.createElement("button");
-//   button.textContent = localStorage.getItem("recentSearch");
-//   searchHistoryEl.appendChild(button);
-// }
+function displayRecentSearches() {
+  let button = document.createElement("button");
+  button.className = recentSearches[0];
+  button.textContent = recentSearches[0];
+  searchHistoryEl.prepend(button);
 
-// displayRecentSearch();
+  button.addEventListener("click", (event) => {
+    getForecastFromRecent(event);
+  });
+}
 
-// Generate Weather Data from User Input on Search Click
-searchBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  // // Save Search
-  // localStorage.setItem(
-  //   "recentSearch",
-  //   document.querySelector("#cityGet").value
-  // );
-  // displayRecentSearch();
-
+function getForecastFromInput() {
   // Get Coordinates
   fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${
@@ -216,4 +214,126 @@ searchBtn.addEventListener("click", (event) => {
             });
         });
     });
+}
+
+function getForecastFromRecent(event) {
+  // Get Coordinates
+  fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${event.target.className}&limit=1&appid=${APIKey}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      cityNameEl.textContent = data[0].name;
+      cityStateEl.textContent = data[0].state;
+      cityCountryEl.textContent = data[0].country;
+
+      let today = new Date();
+      dateEl.textContent = today;
+
+      // Get Present Day Weather from Coordinates
+      return fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKey}&units=imperial`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          iconEl.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+          weatherEl.textContent = data.weather[0].main;
+          weatherDescriptionEl.textContent = data.weather[0].description;
+          temperatureEl.textContent = data.main.temp;
+          humidityEl.textContent = data.main.humidity;
+          windSpeedEl.textContent = data.wind.speed;
+
+          // Get 5 Day Forecast
+          return fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${APIKey}&units=imperial`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              // Noon: 3, 11, 19, 27, 35
+              // Forecast Day 1
+              let day1 = new Date();
+              day1.setDate(today.getDate() + 1);
+              forecast1_dateEl.textContent = day1;
+
+              forecast1_iconEl.src = `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
+              forecast1_weatherEl.textContent = data.list[3].weather[0].main;
+              forecast1_weatherDescriptionEl.textContent =
+                data.list[3].weather[0].description;
+              forecast1_temperatureEl.textContent = data.list[3].main.temp;
+              forecast1_humidityEl.textContent = data.list[3].main.humidity;
+              forecast1_windSpeedEl.textContent = data.list[3].wind.speed;
+
+              // Forecast Day 2
+              let day2 = new Date();
+              day2.setDate(today.getDate() + 2);
+              forecast2_dateEl.textContent = day2;
+
+              forecast2_iconEl.src = `http://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
+              forecast2_weatherEl.textContent = data.list[11].weather[0].main;
+              forecast2_weatherDescriptionEl.textContent =
+                data.list[11].weather[0].description;
+              forecast2_temperatureEl.textContent = data.list[11].main.temp;
+              forecast2_humidityEl.textContent = data.list[11].main.humidity;
+              forecast2_windSpeedEl.textContent = data.list[11].wind.speed;
+
+              // Forecast Day 3
+              let day3 = new Date();
+              day3.setDate(today.getDate() + 3);
+              forecast3_dateEl.textContent = day3;
+
+              forecast3_iconEl.src = `http://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
+              forecast3_weatherEl.textContent = data.list[19].weather[0].main;
+              forecast3_weatherDescriptionEl.textContent =
+                data.list[19].weather[0].description;
+              forecast3_temperatureEl.textContent = data.list[19].main.temp;
+              forecast3_humidityEl.textContent = data.list[19].main.humidity;
+              forecast3_windSpeedEl.textContent = data.list[19].wind.speed;
+
+              // Forecast Day 4
+              let day4 = new Date();
+              day4.setDate(today.getDate() + 4);
+              forecast4_dateEl.textContent = day4;
+
+              forecast4_iconEl.src = `http://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
+              forecast4_weatherEl.textContent = data.list[27].weather[0].main;
+              forecast4_weatherDescriptionEl.textContent =
+                data.list[27].weather[0].description;
+              forecast4_temperatureEl.textContent = data.list[27].main.temp;
+              forecast4_humidityEl.textContent = data.list[27].main.humidity;
+              forecast4_windSpeedEl.textContent = data.list[27].wind.speed;
+
+              // Forecast Day 5
+              let day5 = new Date();
+              day5.setDate(today.getDate() + 5);
+              forecast5_dateEl.textContent = day5;
+
+              forecast5_iconEl.src = `http://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
+              forecast5_weatherEl.textContent = data.list[35].weather[0].main;
+              forecast5_weatherDescriptionEl.textContent =
+                data.list[35].weather[0].description;
+              forecast5_temperatureEl.textContent = data.list[35].main.temp;
+              forecast5_humidityEl.textContent = data.list[35].main.humidity;
+              forecast5_windSpeedEl.textContent = data.list[35].wind.speed;
+            });
+        });
+    });
+}
+
+// Generate Weather Data from User Input on Search Click
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  // // Save Search
+  // localStorage.setItem(
+  //   "recentSearches",
+  //   document.querySelector("#cityGet").value
+  // );
+
+  saveRecentSearch();
+  getRecentSearches();
+  displayRecentSearches();
+  getForecastFromInput();
 });
