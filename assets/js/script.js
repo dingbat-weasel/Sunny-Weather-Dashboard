@@ -86,8 +86,6 @@ const forecast5_windSpeedEl = document.querySelector(".forecast5_windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
 let recentSearches = [];
-getRecentSearches();
-displayRecentSearches();
 
 function saveRecentSearch() {
   recentSearches.unshift(document.querySelector("#cityGet").value);
