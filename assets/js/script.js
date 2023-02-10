@@ -85,7 +85,9 @@ const forecast5_humidityEl = document.querySelector(".forecast5_humidity");
 const forecast5_windSpeedEl = document.querySelector(".forecast5_windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
-let recentSearches = [];
+let recentSearches = ["Seattle"];
+getRecentSearches();
+displayRecentSearches();
 
 function saveRecentSearch() {
   recentSearches.unshift(document.querySelector("#cityGet").value);
