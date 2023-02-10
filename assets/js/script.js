@@ -121,7 +121,7 @@ function displayRecentSearches() {
 function getForecastFromInput() {
   // Get Coordinates
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${
+    `https://api.openweathermap.org/geo/1.0/direct?q=${
       document.querySelector("#cityGet").value
     }&limit=1&appid=${APIKey}`
   )
@@ -162,7 +162,7 @@ function getForecastFromInput() {
               day1.setDate(today.getDate() + 1);
               forecast1_dateEl.textContent = day1;
 
-              forecast1_iconEl.src = `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
+              forecast1_iconEl.src = `https://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
               forecast1_weatherEl.textContent = data.list[3].weather[0].main;
               forecast1_weatherDescriptionEl.textContent =
                 data.list[3].weather[0].description;
@@ -175,7 +175,7 @@ function getForecastFromInput() {
               day2.setDate(today.getDate() + 2);
               forecast2_dateEl.textContent = day2;
 
-              forecast2_iconEl.src = `http://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
+              forecast2_iconEl.src = `https://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
               forecast2_weatherEl.textContent = data.list[11].weather[0].main;
               forecast2_weatherDescriptionEl.textContent =
                 data.list[11].weather[0].description;
@@ -188,7 +188,7 @@ function getForecastFromInput() {
               day3.setDate(today.getDate() + 3);
               forecast3_dateEl.textContent = day3;
 
-              forecast3_iconEl.src = `http://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
+              forecast3_iconEl.src = `https://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
               forecast3_weatherEl.textContent = data.list[19].weather[0].main;
               forecast3_weatherDescriptionEl.textContent =
                 data.list[19].weather[0].description;
@@ -201,7 +201,7 @@ function getForecastFromInput() {
               day4.setDate(today.getDate() + 4);
               forecast4_dateEl.textContent = day4;
 
-              forecast4_iconEl.src = `http://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
+              forecast4_iconEl.src = `https://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
               forecast4_weatherEl.textContent = data.list[27].weather[0].main;
               forecast4_weatherDescriptionEl.textContent =
                 data.list[27].weather[0].description;
@@ -214,7 +214,7 @@ function getForecastFromInput() {
               day5.setDate(today.getDate() + 5);
               forecast5_dateEl.textContent = day5;
 
-              forecast5_iconEl.src = `http://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
+              forecast5_iconEl.src = `https://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
               forecast5_weatherEl.textContent = data.list[35].weather[0].main;
               forecast5_weatherDescriptionEl.textContent =
                 data.list[35].weather[0].description;
@@ -229,7 +229,7 @@ function getForecastFromInput() {
 function getForecastFromRecent(event) {
   // Get Coordinates
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${event.target.className}&limit=1&appid=${APIKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${event.target.className}&limit=1&appid=${APIKey}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -248,7 +248,7 @@ function getForecastFromRecent(event) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          iconEl.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+          iconEl.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
           weatherEl.textContent = data.weather[0].main;
           weatherDescriptionEl.textContent = data.weather[0].description;
           temperatureEl.textContent = data.main.temp;
@@ -268,7 +268,7 @@ function getForecastFromRecent(event) {
               day1.setDate(today.getDate() + 1);
               forecast1_dateEl.textContent = day1;
 
-              forecast1_iconEl.src = `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
+              forecast1_iconEl.src = `https://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@4x.png`;
               forecast1_weatherEl.textContent = data.list[3].weather[0].main;
               forecast1_weatherDescriptionEl.textContent =
                 data.list[3].weather[0].description;
@@ -281,7 +281,7 @@ function getForecastFromRecent(event) {
               day2.setDate(today.getDate() + 2);
               forecast2_dateEl.textContent = day2;
 
-              forecast2_iconEl.src = `http://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
+              forecast2_iconEl.src = `https://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@4x.png`;
               forecast2_weatherEl.textContent = data.list[11].weather[0].main;
               forecast2_weatherDescriptionEl.textContent =
                 data.list[11].weather[0].description;
@@ -294,7 +294,7 @@ function getForecastFromRecent(event) {
               day3.setDate(today.getDate() + 3);
               forecast3_dateEl.textContent = day3;
 
-              forecast3_iconEl.src = `http://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
+              forecast3_iconEl.src = `https://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@4x.png`;
               forecast3_weatherEl.textContent = data.list[19].weather[0].main;
               forecast3_weatherDescriptionEl.textContent =
                 data.list[19].weather[0].description;
@@ -307,7 +307,7 @@ function getForecastFromRecent(event) {
               day4.setDate(today.getDate() + 4);
               forecast4_dateEl.textContent = day4;
 
-              forecast4_iconEl.src = `http://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
+              forecast4_iconEl.src = `https://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@4x.png`;
               forecast4_weatherEl.textContent = data.list[27].weather[0].main;
               forecast4_weatherDescriptionEl.textContent =
                 data.list[27].weather[0].description;
@@ -320,7 +320,7 @@ function getForecastFromRecent(event) {
               day5.setDate(today.getDate() + 5);
               forecast5_dateEl.textContent = day5;
 
-              forecast5_iconEl.src = `http://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
+              forecast5_iconEl.src = `https://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@4x.png`;
               forecast5_weatherEl.textContent = data.list[35].weather[0].main;
               forecast5_weatherDescriptionEl.textContent =
                 data.list[35].weather[0].description;
