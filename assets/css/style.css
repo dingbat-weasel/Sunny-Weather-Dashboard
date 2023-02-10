@@ -89,7 +89,7 @@ main {
 .search_history {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   gap: 1.5rem;
   padding: 1rem;
   border-radius: 0.5rem;

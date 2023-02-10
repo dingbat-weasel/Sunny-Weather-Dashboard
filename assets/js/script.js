@@ -86,6 +86,8 @@ const forecast5_windSpeedEl = document.querySelector(".forecast5_windSpeed");
 
 const APIKey = "1f2ae3b57cb7c607e6bdd221bdb7a3b2";
 let recentSearches = [];
+getRecentSearches();
+displayRecentSearches();
 
 function saveRecentSearch() {
   recentSearches.unshift(document.querySelector("#cityGet").value);
@@ -103,9 +105,18 @@ function displayRecentSearches() {
   button.textContent = recentSearches[0];
   searchHistoryEl.prepend(button);
 
+  // Add Functionality
   button.addEventListener("click", (event) => {
     getForecastFromRecent(event);
   });
+
+  if (recentSearches.length > 6) {
+    recentSearches.length = 6;
+  }
+
+  if (searchHistoryEl.childElementCount > 6) {
+    searchHistoryEl.removeChild(searchHistoryEl.lastChild);
+  }
 }
 
 function getForecastFromInput() {
