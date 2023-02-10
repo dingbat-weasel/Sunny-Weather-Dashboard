@@ -142,7 +142,7 @@ function getForecastFromInput() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          iconEl.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+          iconEl.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
           weatherEl.textContent = data.weather[0].main;
           weatherDescriptionEl.textContent = data.weather[0].description;
           temperatureEl.textContent = data.main.temp;
